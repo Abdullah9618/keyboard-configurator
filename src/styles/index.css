@@ -15,9 +15,9 @@
   --color-border-hover: rgba(255, 255, 255, 0.15);
   
   /* Switch Colors */
-  --color-switch-red: #ff4757;
-  --color-switch-blue: #3742fa;
-  --color-switch-brown: #c4a35a;
+  --color-switch-red: #ff2d55;
+  --color-switch-blue: #00d4ff;
+  --color-switch-brown: #ffcc00;
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
@@ -89,10 +89,9 @@ a {
 /* App Container */
 .app {
   position: relative;
-  min-height: 100vh;
+  min-height: 300vh;
   width: 100%;
   background: var(--color-bg);
-  overflow: hidden;
 }
 
 /* Background Gradient */
@@ -114,8 +113,24 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-container canvas {
+  max-width: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .canvas-container canvas {
+    max-width: 100%;
+  }
 }
 
 /* ============================================

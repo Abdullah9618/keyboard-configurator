@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, Suspense } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { 
   Environment, 
@@ -18,7 +18,7 @@ export default function Experience() {
 
   // Smooth camera animation on mount
   useEffect(() => {
-    camera.position.set(4, 3, 6)
+    camera.position.set(0, 2, 6)
     camera.lookAt(0, 0, 0)
   }, [camera])
 
@@ -89,7 +89,9 @@ export default function Experience() {
         floatIntensity={0.3}
         floatingRange={[-0.1, 0.1]}
       >
-        <Keyboard />
+        <Suspense fallback={null}>
+          <Keyboard />
+        </Suspense>
       </Float>
 
       {/* Ground Contact Shadows */}
@@ -117,11 +119,11 @@ export default function Experience() {
         />
       </mesh>
 
-      {/* Orbit Controls */}
+      {/* Orbit Controls - zoom disabled, scroll controls explode animation */}
       <OrbitControls
         ref={controlsRef}
         enablePan={false}
-        enableZoom={true}
+        enableZoom={false}
         enableRotate={true}
         autoRotate={autoRotate}
         autoRotateSpeed={1}

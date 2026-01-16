@@ -1,12 +1,22 @@
 import { useProgress } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useStore } from '../store/useStore'
+import { useEffect, useState } from 'react'
 
 export default function Loader() {
   const { progress, active } = useProgress()
   const isLoaded = useStore((state) => state.isLoaded)
+  const [forceHide, setForceHide] = useState(false)
 
-  const showLoader = active || !isLoaded
+  // Force hide loader after 3 seconds to prevent infinite loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setForceHide(true)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const showLoader = !forceHide && (active || !isLoaded)
 
   return (
     <AnimatePresence>

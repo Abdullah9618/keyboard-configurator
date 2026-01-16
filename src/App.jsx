@@ -7,10 +7,14 @@ import Loader from './components/Loader'
 import SpecsOverlay from './components/SpecsOverlay'
 import Header from './components/Header'
 import { useStore } from './store/useStore'
+import { useScrollExplode } from './hooks/useScrollExplode'
 
 function App() {
   const [showSpecs, setShowSpecs] = useState(false)
   const switchColor = useStore((state) => state.switchColor)
+  
+  // Enable scroll-based explode animation
+  useScrollExplode()
 
   return (
     <div className="app">
@@ -21,7 +25,7 @@ function App() {
       <div className="canvas-container">
         <Canvas
           shadows
-          camera={{ position: [0, 2, 5], fov: 45 }}
+          camera={{ position: [0, 2, 6], fov: 45 }}
           gl={{ 
             antialias: true,
             alpha: true,
@@ -53,8 +57,8 @@ function App() {
         <p className="product-subtitle">Mechanical Keyboard</p>
         <div className="switch-indicator">
           <span className="switch-dot" style={{ 
-            backgroundColor: switchColor === 'red' ? '#ff4757' : 
-                           switchColor === 'blue' ? '#3742fa' : '#c4a35a' 
+            backgroundColor: switchColor === 'red' ? '#ff2d55' : 
+                           switchColor === 'blue' ? '#00d4ff' : '#ffcc00' 
           }} />
           <span>{switchColor.charAt(0).toUpperCase() + switchColor.slice(1)} Switches</span>
         </div>

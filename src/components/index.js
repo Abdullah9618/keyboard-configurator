@@ -1,5 +1,6 @@
 export { default as Experience } from './Experience'
 export { default as Keyboard } from './Keyboard'
+export { default as KeyboardModel } from './KeyboardModel'
 export { default as Sidebar } from './Sidebar'
 export { default as Header } from './Header'
 export { default as Loader } from './Loader'
